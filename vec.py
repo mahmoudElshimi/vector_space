@@ -55,8 +55,8 @@ class Vec:
 def main() -> None:
     v = Vec([0, 1, 0], "V")
     w = Vec([1, 0, 0], "W")
-    u = v + w
-    u.name = "U"
+    u: Vec = v + w
+    u.name: str = "U"
     print(v)
     print(w)
     print(u)
