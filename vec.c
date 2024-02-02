@@ -4,6 +4,7 @@
 /* u have to add -lm to linker */
 #include <math.h>
 
+/* get dimension of an array X */
 #define DIM(X)        (sizeof X / sizeof X[0])
 
 /* define a vector */
@@ -141,7 +142,7 @@ main()
 		print_vec(&u.result, "U");
         else {
                 printf("Err: %s\n", u.msg);
-		exit(1);	
+		exit(1);
 	}
 
         Option_double res = dot_product(&v, &w);
