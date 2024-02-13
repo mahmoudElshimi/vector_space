@@ -1,13 +1,14 @@
+/* See LICENSE file for copyright and license details. */
+
 #include <stdio.h>
 #include <stdlib.h>
-
-/* u have to add -lm to linker */
+/* u have to add -lm to the linker */
 #include <math.h>
 
-/* get dimension of an array X */
+/* get dimension of an array */
 #define DIM(X)        (sizeof X / sizeof X[0])
 
-/* define a vector */
+/* define a Vector */
 typedef struct {
         int dim;
         double norm;
@@ -23,7 +24,7 @@ typedef struct {
 } Option_double;
 
 
-/* define an option that check for error and return a vector */
+/* define an option that check for error and return a Vector */
 typedef struct {
         int error;
         char *msg;
@@ -31,7 +32,7 @@ typedef struct {
 } Option_vec;
 
 
-/* get norm of an array of vector */
+/* get norm of a Vector */
 double
 get_norm(int dim, double* arr)
 {
@@ -43,6 +44,7 @@ get_norm(int dim, double* arr)
 
 }
 
+/* INIT a Vector */
 Vec
 new_vec(int dim, double* arr)
 {
@@ -68,7 +70,7 @@ print_vec(Vec* v, char* name)
 	puts(")\n");
 }
 
-/* define a dot product on two vectors */
+/* define a dot product on two Vectors */
 Option_double
 dot_product(Vec* self, Vec* other)
 {
@@ -85,7 +87,7 @@ dot_product(Vec* self, Vec* other)
         return ret;
 }
 
-/* define addition on tow vectors */
+/* define addition on tow Vectors */
 Option_vec
 add_vec(Vec* self, Vec* other, double *arr)
 {
@@ -101,7 +103,7 @@ add_vec(Vec* self, Vec* other, double *arr)
 }
 
 
-/* define substitution on tow vectors */
+/* define substitution on tow Vectors */
 Option_vec
 sub_vec(Vec* self, Vec* other, double *arr)
 {
