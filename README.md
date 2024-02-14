@@ -2,7 +2,7 @@ Vector Space:  An implementation of Vector Space written in both C and Python.
 ==============================================================================
 - Why C? God created universe in C.
 - Why Python? You know.
-- Python code was checked using mypy.
+- Python code was statically typed and checked using mypy.
 
 Definition and basic properties
 -------------------------------
