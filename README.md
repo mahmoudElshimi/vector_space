@@ -8,6 +8,7 @@ Definition and basic properties
 -------------------------------
 - A vector is any object that respects these [axioms](https://en.wikipedia.org/wiki/Vector_space#Definition_and_basic_properties), In this implementation we assume that they are $\in \mathbb{R}^{n}$
 - [Dot product](https://en.wikipedia.org/wiki/Dot_product#Definition) is defined as: $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{n}\text{. In general } V\times V\to F$$
+
 - [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as: $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{\|u_{i}\|}} = \sqrt{\sum_{i}{u_{i}^{2}}}$$
 
 To Do
