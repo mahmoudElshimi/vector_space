@@ -48,6 +48,11 @@ get_norm(int dim, double* arr)
 Vec
 new_vec(int dim, double* arr)
 {
+	if (dim <= 0 || arr == NULL) {
+        	fprintf(stderr, "Invalid vector initialization\n");
+        	exit(1);
+    	}
+	
         Vec v = {
                 dim,
                 get_norm(dim, arr),
@@ -70,7 +75,12 @@ print_vec(Vec* v, char* name)
 	puts(")\n");
 }
 
-/* define a dot product on two Vectors */
+/*
+ * Calculates the dot product of two vectors.
+ * @param self Pointer to the first vector.
+ * @param other Pointer to the second vector.
+ * @return Option_double containing the result or an error message.
+ */
 Option_double
 dot_product(Vec* self, Vec* other)
 {
@@ -154,6 +164,6 @@ main()
                 printf("Err: %s\n", res.msg);
 		exit(1);
 	}	
-	printf("Are V & W orthogonal? %b\n", isorthogonal(&v, &w));
+	printf("Are V & W orthogonal? %d\n", isorthogonal(&v, &w));
 	return 0;
 }
