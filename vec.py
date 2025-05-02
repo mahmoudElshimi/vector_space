@@ -47,7 +47,18 @@ class Vec:
 
     def __rmul__(self: Vec, other: float) -> Vec:
         return Vec([other * i for i in self.arr])
-
+        
+    def cross(self: Vec, other: Vec) -> Vec:
+        Vec.check_vec(other)
+        if self.dim != 3 or other.dim != 3:
+            raise ValueError("Cross product is only defined for 3-dimensional vectors")
+        cross_product = [
+            self.arr[1] * other.arr[2] - self.arr[2] * other.arr[1],
+            self.arr[2] * other.arr[0] - self.arr[0] * other.arr[2],
+            self.arr[0] * other.arr[1] - self.arr[1] * other.arr[0],
+        ]
+        return Vec(cross_product, f"{self.name}×{other.name}")    
+        
     def isorthogonal(self: Vec, other: Vec) -> bool:
         return self * other == 0
 
@@ -57,11 +68,13 @@ def main() -> None:
     w = Vec([1, 0, 0], "W")
     u: Vec = v + w
     u.name: str = "U"
+    cross_vw = v.cross(w)
     print(v)
     print(w)
     print(u)
     print("Dot product of V.U: ", v * u)
     print("Are V & W orthogonal? ", v.isorthogonal(w))
+    print(cross_vw) 
 
 
 if __name__ == "__main__":
