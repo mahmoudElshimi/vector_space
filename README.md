@@ -15,9 +15,22 @@ $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w
 
  $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{\|u_{i}\|}} = \sqrt{\sum_{i}{u_{i}^{2}}}$$
 
+- [Cross product](https://en.wikipedia.org/wiki/Cross_product) is defined only in 3D as:
+  
+ $$\vec{u} \times \vec{w} = 
+  \left(
+  \begin{array}{c}
+  u_2 w_3 - u_3 w_2 \\
+  u_3 w_1 - u_1 w_3 \\
+  u_1 w_2 - u_2 w_1
+  \end{array}
+  \right)
+  \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{3}$$
+  
+  
 To Do
 -----
-- Implement a Cross product.
+- Implement a Cross product. #Done as per: #3bc7daa, #22a5520.
 - Support Vectors  $\in \mathbb{C}^{n}$
 - Adding Rust implementation, whay? cuz i love Rust.  
 
