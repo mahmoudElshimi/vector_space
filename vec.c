@@ -97,6 +97,23 @@ dot_product(Vec* self, Vec* other)
         return ret;
 }
 
+/* define cross product for two 3D Vectors */
+Option_vec
+cross_product(Vec* self, Vec* other, double* arr)
+{
+    if (self->dim != 3 || other->dim != 3) {
+        Option_vec ret = {1, "Both vectors must be 3-dimensional for cross product", {}};
+        return ret;
+    }
+
+    arr[0] = self->arr[1] * other->arr[2] - self->arr[2] * other->arr[1];
+    arr[1] = self->arr[2] * other->arr[0] - self->arr[0] * other->arr[2];
+    arr[2] = self->arr[0] * other->arr[1] - self->arr[1] * other->arr[0];
+
+    Option_vec ret = {0, "", {3, get_norm(3, arr), arr}};
+    return ret;
+}
+
 /* define addition on tow Vectors */
 Option_vec
 add_vec(Vec* self, Vec* other, double *arr)
@@ -164,6 +181,14 @@ main()
                 printf("Err: %s\n", res.msg);
 		exit(1);
 	}	
+	Option_vec cross = cross_product(&v, &w, c);
+	if (cross.error == 0)
+ 	   print_vec(&cross.result, "Cross Product of VxW");
+	else {
+	    printf("Err: %s\n", cross.msg);
+	    exit(1);
+	}
+	
 	printf("Are V & W orthogonal? %d\n", isorthogonal(&v, &w));
 	return 0;
 }
