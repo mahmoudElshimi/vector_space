@@ -6,18 +6,24 @@ Vector Space:  An implementation of Vector Space written in both C and Python.
 
 Definition and basic properties
 -------------------------------
-- A vector is any object that respects these [axioms](https://en.wikipedia.org/wiki/Vector_space#Definition_and_basic_properties), In this implementation we assume that they are $\in \mathbb{R}^{n}$
+- A vector is any object that respects these [axioms](https://en.wikipedia.org/wiki/Vector_space#Definition_and_basic_properties). 
+   In this implementation we assume that they are $\in \mathbb{C}^{n}$
+  
 - [Dot product](https://en.wikipedia.org/wiki/Dot_product#Definition) is defined as:
   
-$$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{n}\text{. In general } V\times V\to F$$
+  For \(\mathbb{R}^n\):
+  $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{n} \text{. In general } V \times V \to F$$
+  
+  For \(\mathbb{C}^n\):
+  $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}\overline{w_{i}}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{C}^{n} \text{ and } \overline{w_{i}} \text{ is the complex conjugate of } w_{i}.$$
 
 - [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as:
-
- $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{\|u_{i}\|}} = \sqrt{\sum_{i}{u_{i}^{2}}}$$
+  
+  $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{|u_{i}|^2}}$$
 
 - [Cross product](https://en.wikipedia.org/wiki/Cross_product) is defined only in 3D as:
   
- $$\vec{u} \times \vec{w} = 
+  $$\vec{u} \times \vec{w} = 
   \left(
   \begin{array}{c}
   u_2 w_3 - u_3 w_2 \\
@@ -26,12 +32,12 @@ $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w
   \end{array}
   \right)
   \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{3}$$
-  
+
   
 To Do
 -----
 - Implement a Cross product. #Done as per: #3bc7daa, #22a5520.
-- Support Vectors  $\in \mathbb{C}^{n}$
+- Support Vectors  $\in \mathbb{C}^{n}$ . #Done as per: #4be75a6
 - Adding Rust implementation, whay? cuz i love Rust.  
 
 Requirements
