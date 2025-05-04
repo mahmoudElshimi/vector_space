@@ -191,4 +191,48 @@ main()
 	
 	printf("Are V & W orthogonal? %d\n", isorthogonal(&v, &w));
 	return 0;
+
+	/*
+		Output:
+	
+	Vec V (
+	Array:
+		0.000000 + 0.000000i
+		1.000000 + 0.000000i
+		0.000000 + 0.000000i
+	Norm:	1.000000
+	Dim:	3
+	)
+	
+	Vec W (
+	Array:
+		0.000000 + 0.000000i
+		0.000000 + 0.000000i
+		1.000000 + 0.000000i
+	Norm:	1.000000
+	Dim:	3
+	)
+	
+	Addition of V+W:
+	Vec U (
+	Array:
+		0.000000 + 0.000000i
+		1.000000 + 0.000000i
+		1.000000 + 0.000000i
+	Norm:	1.414214
+	Dim:	3
+	)
+	
+	Dot Product of V.W: 0.000000
+	Vec Cross Product of VxW (
+	Array:
+		1.000000 + 0.000000i
+		0.000000 + 0.000000i
+		1.000000 + 0.000000i
+	Norm:	1.414214
+	Dim:	3
+	)
+	
+	Are V & W orthogonal? 1
+	*/
 }
