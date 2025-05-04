@@ -11,10 +11,12 @@ Definition and basic properties
   
 - [Dot product](https://en.wikipedia.org/wiki/Dot_product#Definition) is defined as:
   
-  For \(\mathbb{R}^n\):
-  $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{n} \text{. In general } V \times V \to F$$
-  
-  For \(\mathbb{C}^n\):
+For $\mathbb{R}^n$:
+
+ $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}w_{i}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{n} \text{. In general } V \times V \to F$$
+ 
+For $\mathbb{C}^n$:
+     
   $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}\overline{w_{i}}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{C}^{n} \text{ and } \overline{w_{i}} \text{ is the complex conjugate of } w_{i}.$$
   
 - [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as:
