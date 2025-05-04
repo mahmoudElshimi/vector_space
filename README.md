@@ -17,7 +17,7 @@ For $\mathbb{R}^n$:
  
 For $\mathbb{C}^n$:
      
-  $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}\overline{w_{i}}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{C}^{n} \text{ and } \overline{w_{i}} \text{ is the complex conjugate of } w_{i}.$$
+  $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}\overline{w_{i}}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{C}^{n} \text{ and } \overline{w_{i}} \text{ is the complex conjugate of } w_{i}$$
   
 - [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as:
 
