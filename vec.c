@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <complex.h>
 /* u have to add -lm to the linker */
 #include <math.h>
 
@@ -12,7 +13,7 @@
 typedef struct {
         int dim;
         double norm;
-        double *arr;
+        double complex *arr;
 } Vec;
 
 
@@ -34,45 +35,42 @@ typedef struct {
 
 /* get norm of a Vector */
 double
-get_norm(int dim, double* arr)
+get_norm(int dim, double complex* arr)
 {
-        double norm = 0;
-        for (int i=0; i<dim; i++)
-                norm += (arr[i]*arr[i]);
-        norm = sqrt(norm);
-        return norm;
-
+    double norm = 0;
+    for (int i = 0; i < dim; i++) {
+        norm += pow(cabs(arr[i]), 2);  /* Sum of squared magnitudes */
+    }
+    return sqrt(norm);
 }
 
 /* INIT a Vector */
 Vec
-new_vec(int dim, double* arr)
+new_vec(int dim, double complex* arr)
 {
-	if (dim <= 0 || arr == NULL) {
-        	fprintf(stderr, "Invalid vector initialization\n");
-        	exit(1);
-    	}
-	
-        Vec v = {
-                dim,
-                get_norm(dim, arr),
-		arr 
-        };
-        return v;
-}
+    if (dim <= 0 || arr == NULL) {
+        fprintf(stderr, "Invalid vector initialization\n");
+        exit(1);
+    }
 
+    Vec v = {
+        dim,
+	get_norm(dim, arr),
+        arr  
+    };
+    return v;
+}
 
 void
 print_vec(Vec* v, char* name)
 {
-        printf("Vec %s (\nArray:\n", name);
-        for (int i=0; i<v->dim; i++) {
-                printf("\t%f\n", v->arr[i]);
-        }
-	puts("\n");
-        printf("Norm:\t%f\n", v->norm);
-        printf("Dim:\t%d\n", v->dim);
-	puts(")\n");
+    printf("Vec %s (\nArray:\n", name);
+    for (int i = 0; i < v->dim; i++) {
+        printf("\t%f + %fi\n", creal(v->arr[i]), cimag(v->arr[i]));
+    }
+    printf("Norm:\t%f\n", v->norm);
+    printf("Dim:\t%d\n", v->dim);
+    puts(")\n");
 }
 
 /*
@@ -84,17 +82,18 @@ print_vec(Vec* v, char* name)
 Option_double
 dot_product(Vec* self, Vec* other)
 {
-        if (self->dim != other->dim) {
-                Option_double ret = {1, "Both dimensions must be equal", 0};
-                return ret;
-        }
-
-        double res = 0;
-        for (int i=0; i<self->dim; i++)
-                res += (self->arr[i] * other->arr[i]);
-
-        Option_double ret = {0, "", res};
+    if (self->dim != other->dim) {
+        Option_double ret = {1, "Both dimensions must be equal", 0};
         return ret;
+    }
+
+    double complex res = 0;
+    for (int i = 0; i < self->dim; i++) {
+        res += self->arr[i] * conj(other->arr[i]);  /* Dot product with conjugate */
+    }
+
+    Option_double ret = {0, "", creal(res)};  /* Return real part of the result */
+    return ret;
 }
 
 /* define cross product for two 3D Vectors */
@@ -116,17 +115,18 @@ cross_product(Vec* self, Vec* other, double* arr)
 
 /* define addition on tow Vectors */
 Option_vec
-add_vec(Vec* self, Vec* other, double *arr)
+add_vec(Vec* self, Vec* other, double complex *arr)
 {
-        if (self->dim != other->dim) {
-                Option_vec ret = {1, "Both dimensions must be equal", {}};
-                return ret;
-        }
-	int dim = self->dim;
-        for (int i=0; i<dim; i++)
-                arr[i] = (self->arr[i] + other->arr[i]);
-        Option_vec ret = {0, "", {dim, get_norm(dim, arr), arr}};
+    if (self->dim != other->dim) {
+        Option_vec ret = {1, "Both dimensions must be equal", {}};
         return ret;
+    }
+    int dim = self->dim;
+    for (int i = 0; i < dim; i++) {
+        arr[i] = self->arr[i] + other->arr[i];
+    }
+    Option_vec ret = {0, "", {dim, get_norm(dim, arr), arr}};
+    return ret;
 }
 
 
@@ -158,9 +158,9 @@ isorthogonal(Vec* self, Vec* other)
 int
 main()
 {
-        double a[] = {0, 1, 0};
-        double b[] = {0, 0, 1};
-	double c[DIM(a)];
+        double complex a[] = {0, 1, 0};
+        double complex b[] = {0, 0, 1};
+	double complex c[DIM(a)];
         Vec v = new_vec(DIM(a), a);
         Vec w = new_vec(DIM(b), b);
         print_vec(&v, "V");
