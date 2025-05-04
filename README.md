@@ -16,14 +16,14 @@ Definition and basic properties
   
   For \(\mathbb{C}^n\):
   $$\vec{u} \cdot \vec{w} = \sum_{i}{u_{i}\overline{w_{i}}} \textit{, where } \vec{u}, \vec{w} \in \mathbb{C}^{n} \text{ and } \overline{w_{i}} \text{ is the complex conjugate of } w_{i}.$$
-
-- [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as:
   
-  $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{|u_{i}|^2}}$$
+- [Norm](https://en.wikipedia.org/wiki/Norm_(mathematics)) is defined as:
+
+ $$\|\|\vec{u}\|\| = \sqrt{\sum_{i}{\|u_{i}\|}} = \sqrt{\sum_{i}{u_{i}^{2}}}$$
 
 - [Cross product](https://en.wikipedia.org/wiki/Cross_product) is defined only in 3D as:
   
-  $$\vec{u} \times \vec{w} = 
+ $$\vec{u} \times \vec{w} = 
   \left(
   \begin{array}{c}
   u_2 w_3 - u_3 w_2 \\
@@ -32,7 +32,8 @@ Definition and basic properties
   \end{array}
   \right)
   \textit{, where } \vec{u}, \vec{w} \in \mathbb{R}^{3}$$
-
+  
+  
   
 To Do
 -----
